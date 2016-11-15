@@ -21,7 +21,7 @@
       "metadata": {
         "name": "${NAME}",
         "annotations": {
-          "description": "Exposes and load balances the application pods"
+          "description": "Exposes and load balances the application pods",
           "service.alpha.openshift.io/dependencies": "[{\"name\": \"${FILE_RESOURCE_SERVICE_NAME}\", \"kind\": \"Service\"}]"
         }
       },
@@ -220,17 +220,17 @@
                   {
                     "name": "MONGODB_ADMIN_PASSWORD",
                     "value": "${MONGODB_ADMIN_PASSWORD}"
-                  }
+                  },
                   {
                     "name": "FILE_RESOURCE_SERVICE_NAME",
                     "value": "${FILE_RESOURCE_SERVICE_NAME}"
-                  },
+                  }
                 ],
                 "resources": {
                   "limits": {
                     "memory": "${MEMORY_LIMIT}"
                   }
-                }
+                },
                 "volumeMounts": [
                   {
                     "name": "${FILE_RESOURCE_SERVICE_NAME}-data",
@@ -250,7 +250,7 @@
           }
         }
       }
-    }
+    },
     {
       "kind": "PersistentVolumeClaim",
       "apiVersion": "v1",
@@ -267,7 +267,7 @@
           }
         }
       }
-    },
+    }
   ],
   "parameters": [
     {
@@ -359,7 +359,9 @@
     },
     {
       "name": "FILE_RESOURCE_SERVICE_NAME",
-      "displayName": "File Resource Service Name"
+      "displayName": "File Resource Service Name",
+      "required": true,
+      "value": "uploadwebdir"
     },
     {
       "name": "VOLUME_CAPACITY",
